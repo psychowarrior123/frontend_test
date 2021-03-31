@@ -1,0 +1,20 @@
+const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const mainDiv = document.createElement('div');
+    const paragraph = document.createElement('p');
+    paragraph.innerHTML = 'Feedback has been sent';
+    mainDiv.appendChild(paragraph);
+    const emailDiv = document.createElement('div');
+    emailDiv.innerHTML = `Email: ${formData.get('email')}`;
+    mainDiv.appendChild(emailDiv);
+    const nameDiv = document.createElement('div');
+    nameDiv.innerHTML = `Name: ${formData.get('name')}`;
+    mainDiv.appendChild(nameDiv);
+    const commentDiv = document.createElement('div');
+    commentDiv.innerHTML = `Comment: ${formData.get('comment')}`;
+    mainDiv.appendChild(commentDiv);
+    const div = form.closest('div');
+    div.innerHTML = mainDiv.innerHTML;
+  });
